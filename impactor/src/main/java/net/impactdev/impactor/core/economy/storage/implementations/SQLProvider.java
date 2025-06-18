@@ -51,7 +51,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Instant;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
@@ -59,12 +58,12 @@ import java.util.function.Function;
 
 public final class SQLProvider implements EconomyStorageImplementation {
 
-    public static final String HAS_ACCOUNT = "SELECT 1 FROM '{prefix}accounts' WHERE uuid = ? AND currency = ?";
-    public static final String ACCOUNT = "SELECT * FROM '{prefix}accounts' WHERE uuid = ? AND currency = ?";
-    public static final String UPDATE_OR_INSERT_ACCOUNT = "INSERT INTO '{prefix}accounts' (uuid, currency, virtual, balance) VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE balance = VALUES(balance)";
-    public static final String ALL_ACCOUNTS = "SELECT * FROM '{prefix}accounts'";
-    public static final String DELETE_ACCOUNT = "DELETE FROM '{prefix}accounts' WHERE uuid = ? AND currency = ?";
-    public static final String TRUNCATE_ACCOUNTS = "TRUNCATE TABLE '{prefix}accounts'";
+    public static final String HAS_ACCOUNT = "SELECT 1 FROM `{prefix}accounts` WHERE uuid = ? AND currency = ?";
+    public static final String ACCOUNT = "SELECT * FROM `{prefix}accounts` WHERE uuid = ? AND currency = ?";
+    public static final String UPDATE_OR_INSERT_ACCOUNT = "INSERT INTO `{prefix}accounts` (uuid, currency, `virtual`, balance) VALUES(?, ?, ?, ?) ON DUPLICATE KEY UPDATE balance = VALUES(balance)";
+    public static final String ALL_ACCOUNTS = "SELECT * FROM `{prefix}accounts`";
+    public static final String DELETE_ACCOUNT = "DELETE FROM `{prefix}accounts` WHERE uuid = ? AND currency = ?";
+    public static final String TRUNCATE_ACCOUNTS = "TRUNCATE TABLE `{prefix}accounts`";
 
     private final BaseImpactorPlugin plugin;
     private final SQLConnection factory;
